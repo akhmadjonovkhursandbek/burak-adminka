@@ -1,7 +1,7 @@
 import { Task } from "vscode";
 
 console.log("Train Area:");
-console.log("ZA-TASK");
+console.log("ZC-TASK");
 
 // // H-TASK
 
@@ -354,8 +354,18 @@ console.log("ZA-TASK");
 
 // ZA-Task
 
-function sortByAge(arr: { age: number }[]): { age: number }[] {
-  return arr.sort((a, b) => a.age - b.age);
+// function sortByAge(arr: { age: number }[]): { age: number }[] {
+//   return arr.sort((a, b) => a.age - b.age);
+// }
+// const people = [{ age: 23 }, { age: 21 }, { age: 13 }];
+// console.log(sortByAge(people));
+
+// ZC-TASK
+
+function celsiusToFahrenheit(celsius: number): number {
+  return (celsius * 9/5) + 32;
 }
-const people = [{ age: 23 }, { age: 21 }, { age: 13 }];
-console.log(sortByAge(people));
+
+console.log(celsiusToFahrenheit(0)); 
+console.log(celsiusToFahrenheit(100)); 
+console.log(celsiusToFahrenheit(-40));
