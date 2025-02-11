@@ -1,5 +1,3 @@
-import { Task } from "vscode";
-
 console.log("Train Area:");
 console.log("ZC-TASK");
 
