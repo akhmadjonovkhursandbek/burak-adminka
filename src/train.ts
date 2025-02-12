@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZC-TASK");
+console.log("ZD-TASK");
 
 // // H-TASK
 
@@ -360,10 +360,23 @@ console.log("ZC-TASK");
 
 // ZC-TASK
 
-function celsiusToFahrenheit(celsius: number): number {
-  return (celsius * 9/5) + 32;
-}
+// function celsiusToFahrenheit(celsius: number): number {
+//   return (celsius * 9/5) + 32;
+// }
 
-console.log(celsiusToFahrenheit(0)); 
-console.log(celsiusToFahrenheit(100)); 
-console.log(celsiusToFahrenheit(-40));
+// console.log(celsiusToFahrenheit(0));
+// console.log(celsiusToFahrenheit(100));
+// console.log(celsiusToFahrenheit(-40));
+
+function changeNumberInArray(
+  target: number,
+  arr: number[],
+  newValue: number
+): number[] {
+  const index = arr.indexOf(target);
+  if (index !== -1) {
+    arr[index] = newValue;
+  }
+  return arr;
+}
+console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
