@@ -370,7 +370,6 @@ console.log("ZE-TASK");
 
 // ZD-TASK
 
-
 // function changeNumberInArray(
 //   target: number,
 //   arr: number[],
@@ -384,10 +383,27 @@ console.log("ZE-TASK");
 // }
 // console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
 
-// E-TASK
+// ZE-TASK
 
-function removeDuplicate(str: string): string {
-  return Array.from(new Set(str)).join('');
+// function removeDuplicate(str: string): string {
+//   return Array.from(new Set(str)).join('');
+// }
+// console.log(removeDuplicate('stringg'));
+
+// ZF-TASK
+
+function capitalizeWords(input: string): string {
+  return input
+    .split(" ")
+    .map((word) => {
+      if (word.length > 2) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }
+      return word;
+    })
+    .join(" ");
 }
-console.log(removeDuplicate('stringg')); 
 
+console.log(capitalizeWords("name should be a string"));
+console.log(capitalizeWords("i am a adam"));
+console.log(capitalizeWords("this is a test case"));
