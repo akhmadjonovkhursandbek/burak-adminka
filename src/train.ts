@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZD-TASK");
+console.log("ZE-TASK");
 
 // // H-TASK
 
@@ -368,15 +368,26 @@ console.log("ZD-TASK");
 // console.log(celsiusToFahrenheit(100));
 // console.log(celsiusToFahrenheit(-40));
 
-function changeNumberInArray(
-  target: number,
-  arr: number[],
-  newValue: number
-): number[] {
-  const index = arr.indexOf(target);
-  if (index !== -1) {
-    arr[index] = newValue;
-  }
-  return arr;
+// ZD-TASK
+
+
+// function changeNumberInArray(
+//   target: number,
+//   arr: number[],
+//   newValue: number
+// ): number[] {
+//   const index = arr.indexOf(target);
+//   if (index !== -1) {
+//     arr[index] = newValue;
+//   }
+//   return arr;
+// }
+// console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
+
+// E-TASK
+
+function removeDuplicate(str: string): string {
+  return Array.from(new Set(str)).join('');
 }
-console.log(changeNumberInArray(1, [1, 3, 7, 2], 2));
+console.log(removeDuplicate('stringg')); 
+
