@@ -4,7 +4,7 @@ import MemberService from "../models/Member.service";
 import { Member } from "../libs/types/member";
 import {
   Order,
-  OrderInquiry,
+  OrderInquery,
   OrderItemInput,
   OrderUpdateInput,
 } from "../libs/types/order";
@@ -34,20 +34,15 @@ class OrderService {
       }, 0),
       delivery = amount < 100 ? 5 : 0;
 
-    try {
-      const newOrder: Order = (await this.orderModel.create({
-        orderTotal: amount + delivery,
-        orderDelivery: delivery,
-        memberId: memberId,
-      })) as unknown as Order;
+    const newOrder: Order = (await this.orderModel.create({
+      orderTotal: amount + delivery,
+      orderDelivery: delivery,
+      memberId: memberId,
+    })) as unknown as Order;
 
-      await this.recordOrderItem(newOrder._id, input);
+    await this.recordOrderItem(newOrder._id, input);
 
-      return newOrder;
-    } catch (err) {
-      console.log("Error, createOrder", err);
-      throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
-    }
+    return newOrder;
   }
 
   private async recordOrderItem(
@@ -68,7 +63,7 @@ class OrderService {
 
   public async getMyOrders(
     member: Member,
-    inquiry: OrderInquiry
+    inquiry: OrderInquery
   ): Promise<Order[]> {
     const memberId = shapeIntoMongooseObjectId(member._id),
       matches = { memberId: memberId, orderStatus: inquiry.orderStatus },
@@ -110,7 +105,6 @@ class OrderService {
       orderId = shapeIntoMongooseObjectId(input.orderId),
       orderStatus = input.orderStatus,
       result = await this.orderModel
-        // findByIdAndUpdate vs findOneAndUpdate ?
         .findOneAndUpdate(
           { _id: orderId, memberId: memberId }, // isn't {_id: orderId} enough?
           { orderStatus: orderStatus },

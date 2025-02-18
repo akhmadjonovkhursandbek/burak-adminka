@@ -23,7 +23,7 @@ routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 routerAdmin.get(
   "/product/all",
   restaurantController.verifyRestaurant,
-  productController.getAllProducts
+  productController.getAllProducts 
 );
 routerAdmin.post(
   "/product/create",
@@ -44,9 +44,8 @@ routerAdmin.get(
   restaurantController.getUsers
 );
 routerAdmin.post(
-  "/user/edit",
+  "/user/edit/",
   restaurantController.verifyRestaurant,
   restaurantController.updateChosenUser
 );
-
 export default routerAdmin;

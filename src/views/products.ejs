@@ -43,44 +43,32 @@
                 <th scope="col">Status</th>
               </tr>
             </thead>
-            <% products.map(function(value, key) { %>
+            <!--  LOOP PRODUCTS: START  -->
+            <% products.map(function(value, key){ %>
             <tbody style="background: white">
-              <td><%= key + 1 %>/td></td>
-              <td><%= value.productName %>></td>
+              <td><%= key + 1%></td>
+              <td><%= value.productName %></td>
               <td><%= value.productCollection %></td>
+
               <td>
-                <%= value.productCollection === 'DRINK' ? value.productVolume :
-                value.productSize >
+                <%= value.productCollection === 'DRINK'? value.productVolume :
+                value.productSize %>
               </td>
               <td><%= value.productPrice %></td>
               <td><%= value.productLeftCount %></td>
               <td>
                 <select
                   class="spec-select new-product-status"
-                  id="<%= value._id %>"
+                  id="<%=value._id%>"
                 >
-                  <option value="PAUSE" <%= value.productStatus === 'PAUSE' ? 'selected': '' %> >PAUSE</option>
-                  <option value="PROCESS" <%= value.productStatus === 'PROCESS' ? 'selected': '' %> >PROCESS</option>
-                  <option value="DELETE" <%= value.productStatus === 'DELETE' ? 'selected': '' %> >DELETE</option>
+                  <option value="PAUSE" <%= value.productStatus === "PAUSE"? "selected" : '' %>>PAUSE</option>
+                  <option value="PROCESS"<%= value.productStatus === "PROCESS"? "selected" : '' %>>PROCESS</option>
+                  <option value="DELETE"<%= value.productStatus === "DELETE"? "selected" : '' %>>DELETE</option>
                 </select>
               </td>
             </tbody>
-            <% }) %>
-            <tbody style="background: white">
-              <td>1</td>
-              <td>Steak</td>
-              <td>Dish</td>
-              <td>NORMAL</td>
-              <td>11</td>
-              <td>100</td>
-              <td>
-                <select class="spec-select new-product-status">
-                  <option value="PAUSE" selected>PAUSE</option>
-                  <option value="PROCESS">PROCESS</option>
-                  <option value="DELETE">DELETE</option>
-                </select>
-              </td>
-            </tbody>
+
+            <% })%>
             <!--  LOOP PRODUCTS: END  -->
           </table>
           <div
@@ -198,8 +186,9 @@
                   type="file"
                   id="file"
                   name="productImages"
-                  class="image-two"
+                  class="image-two"         
                   onchange="previewFileHandler(this, 2)"
+
                 />
               </div>
               <div class="upload-img-box">
@@ -210,6 +199,7 @@
                   name="productImages"
                   class="image-three"
                   onchange="previewFileHandler(this, 3)"
+
                 />
               </div>
               <div class="upload-img-box">
@@ -218,8 +208,9 @@
                   type="file"
                   id="file"
                   name="productImages"
-                  class="image-four"
+                  class="image-four"                  
                   onchange="previewFileHandler(this, 4)"
+
                 />
               </div>
               <div class="upload-img-box">
@@ -228,8 +219,9 @@
                   type="file"
                   id="file"
                   name="productImages"
-                  class="image-five"
+                  class="image-five"                  
                   onchange="previewFileHandler(this, 5)"
+
                 />
               </div>
               <input name="restaurantIid" class="restaurant-id" hidden />
@@ -248,6 +240,7 @@
   </div>
 
   <script type="text/javascript" src="/js/products.js"></script>
+
 </body>
 
 <%- include('includes/footer') %>

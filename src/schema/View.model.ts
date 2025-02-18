@@ -1,26 +1,22 @@
 import mongoose, { Schema } from "mongoose";
-import { ViewGroup } from "../libs/enums/View.enum";
 
-const viewSchema = new Schema(
-  {
-    viewGroup: {
-      type: String,
-      enum: ViewGroup,
-      required: true,
-    },
+import { ViewGroup } from "../libs/enums/view.enum";
 
-    memberId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "Member",
-    },
-
-    viewRefId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-    },
+const viewSchema = new Schema({
+  viewGroup: {
+    type: String,
+    enum: ViewGroup,
+    required: true,
   },
-  { timestamps: true }
-);
+  memberId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: "Member",
+  },
+  viewRefId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+}, { timestamps: true });
 
 export default mongoose.model("View", viewSchema);

@@ -1,5 +1,5 @@
-import {ObjectId} from "mongoose";
-import { ViewGroup } from "../enums/View.enum";
+import { ObjectId } from "mongoose";
+import { ViewGroup } from "../enums/view.enum";
 
 export interface View {
   _id: ObjectId;
@@ -11,7 +11,7 @@ export interface View {
 }
 
 export interface ViewInput {
-   memberId: ObjectId,
-   viewRefId: ObjectId,
-   viewGroup: ViewGroup;
+  memberId: ObjectId;
+  viewRefId: ObjectId;
+  viewGroup: ViewGroup;
 }

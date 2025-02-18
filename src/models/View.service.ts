@@ -1,7 +1,6 @@
-import { HttpCode, Message } from "../libs/Errors";
-import { View, ViewInput } from "../libs/types/view";
 import ViewModel from "../schema/View.model";
-import Errors from "../libs/Errors";
+import { View, ViewInput } from "../libs/types/view";
+import Errors, { HttpCode, Message } from "../libs/Errors";
 
 class ViewService {
   private readonly viewModel;
@@ -12,7 +11,11 @@ class ViewService {
 
   public async checkViewExistence(input: ViewInput): Promise<View> {
     return (await this.viewModel
-      .findOne({ memberId: input.memberId, viewRefId: input.viewRefId })
+      .findOne({
+        memberId: input.memberId,
+        viewGroup: input.viewGroup,
+        viewRefId: input.viewRefId,
+      })
       .exec()) as unknown as View;
   }
 
@@ -20,7 +23,7 @@ class ViewService {
     try {
       return (await this.viewModel.create(input)) as unknown as View;
     } catch (err) {
-      console.log("ERROR, model:insertMemberView:", err);
+      console.log("Error, model:insertMemberView", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     }
   }

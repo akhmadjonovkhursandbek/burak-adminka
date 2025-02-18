@@ -1,13 +1,7 @@
 import { T } from "../libs/types/common";
 import { Request, Response } from "express";
 import ProductService from "../models/Product.service";
-import {
-  Member,
-  MemberInput,
-  LoginInput,
-  AdminRequest,
-  ExtendedRequest,
-} from "../libs/types/member";
+import { AdminRequest, ExtendedRequest } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import { ProductInput, ProductInquiry } from "../libs/types/product";
 import { ProductCollection } from "../libs/enums/product.enum";
@@ -15,50 +9,51 @@ import { ProductCollection } from "../libs/enums/product.enum";
 const productService = new ProductService();
 const productController: T = {};
 // SPA
-
 productController.getProducts = async (req: Request, res: Response) => {
   try {
     console.log("getProducts");
+
     const { page, limit, order, productCollection, search } = req.query;
+    // Construct the inquiry object for the product service
+    // Convert page and limit to numbers since query params are strings
+    // Convert order to string to ensure type safety
     const inquiry: ProductInquiry = {
       order: String(order),
-      page: Number(page),
+      page: Number(page), 
       limit: Number(limit),
     };
-    if (productCollection)
-      inquiry.productCollection = productCollection as ProductCollection;
-    if (search) inquiry.search = String(search);
+
+    if (productCollection) {inquiry.productCollection = productCollection as ProductCollection;}
+
+    if (search) {inquiry.search = String(search);}
 
     const result = await productService.getProducts(inquiry);
 
     res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, getProducts:", err);
-    const message =
-      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-    res.send(
-      `<script> alert("${message}"); window.location.replace("/admin/signup")</script>`
-    );
+
+    if (err instanceof Errors) {
+      res.status(err.code).json(err);
+    } else {res.status(Errors.standard.code).json(Errors.standard);}
   }
 };
 
 productController.getProduct = async (req: ExtendedRequest, res: Response) => {
   try {
-    console.log("getProduct");
+      console.log("getProduct");
+      const { id } = req.params;
+      console.log(req.member)
+      const memberId = req.member?._id ?? null,
+          result = await productService.getProduct(memberId, id);
+      
+        
 
-    const { id } = req.params;
-    console.log("req.member:", req.member);
-    const memberId = req.member?._id ?? null,
-      result = await productService.getProduct(memberId, id);
-
-    res.status(HttpCode.OK).json(result);
+      res.status(HttpCode.OK).json(result);
   } catch (err) {
-    console.log("Error, getProduct:", err);
-    const message =
-      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-    res.send(
-      `<script> alert("${message}"); window.location.replace("/admin/signup")</script>`
-    );
+      console.log("Error, getProduct:", err);
+      if (err instanceof Errors) res.status(err.code).json(err);
+      else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
 

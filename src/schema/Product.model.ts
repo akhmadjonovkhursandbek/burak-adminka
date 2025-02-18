@@ -1,13 +1,18 @@
 import mongoose, { Schema } from "mongoose";
 import {
-  ProductCollection,
   ProductSize,
-  ProductStatus,
   ProductVolume,
+  ProductStatus,
+  ProductCollection,
 } from "../libs/enums/product.enum";
 
 const productSchema = new Schema(
   {
+    productName: {
+      type: String,
+      required: true,
+    },
+
     productStatus: {
       type: String,
       enum: ProductStatus,
@@ -17,12 +22,7 @@ const productSchema = new Schema(
     productCollection: {
       type: String,
       enum: ProductCollection,
-      required: true,
-    },
-
-    productName: {
-      type: String,
-      required: true,
+      require: true,
     },
 
     productPrice: {
@@ -61,11 +61,13 @@ const productSchema = new Schema(
       default: 0,
     },
   },
-  { timestamps: true } // updatedAt, createdAt
+  { timestamps: true }
 );
 
+// compound unique
 productSchema.index(
   { productName: 1, productSize: 1, productVolume: 1 },
   { unique: true }
 );
+
 export default mongoose.model("Product", productSchema);
