@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZF-TASK");
+console.log("ZG-TASK");
 
 // // H-TASK
 
@@ -392,18 +392,29 @@ console.log("ZF-TASK");
 
 // ZF-TASK
 
-function capitalizeWords(input: string): string {
-  return input
-    .split(" ")
-    .map((word) => {
-      if (word.length > 2) {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      }
-      return word;
-    })
-    .join(" ");
-}
+// function capitalizeWords(input: string): string {
+//   return input
+//     .split(" ")
+//     .map((word) => {
+//       if (word.length > 2) {
+//         return word.charAt(0).toUpperCase() + word.slice(1);
+//       }
+//       return word;
+//     })
+//     .join(" ");
+// }
 
-console.log(capitalizeWords("name should be a string"));
-console.log(capitalizeWords("i am a adam"));
-console.log(capitalizeWords("this is a test case"));
+// console.log(capitalizeWords("name should be a string"));
+// console.log(capitalizeWords("i am a adam"));
+// console.log(capitalizeWords("this is a test case"));
+
+
+// ZG-TASK
+
+function capitalizeWordsToSnakeCase(input: string): string {
+  return input
+      .trim()
+      .toLowerCase() 
+      .replace(/\s+/g, '_');
+}
+console.log(capitalizeWordsToSnakeCase('name should be a string'));
