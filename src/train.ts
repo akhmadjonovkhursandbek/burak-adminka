@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZG-TASK");
+console.log("ZH-TASK");
 
 // // H-TASK
 
@@ -408,13 +408,29 @@ console.log("ZG-TASK");
 // console.log(capitalizeWords("i am a adam"));
 // console.log(capitalizeWords("this is a test case"));
 
-
 // ZG-TASK
 
-function capitalizeWordsToSnakeCase(input: string): string {
-  return input
-      .trim()
-      .toLowerCase() 
-      .replace(/\s+/g, '_');
+// function capitalizeWordsToSnakeCase(input: string): string {
+//   return input
+//       .trim()
+//       .toLowerCase()
+//       .replace(/\s+/g, '_');
+// }
+// console.log(capitalizeWordsToSnakeCase('name should be a string'));
+
+// ZH-TASK
+
+function findDisappearedNumbers(arr: number[]): number[] {
+  const maxNum = Math.max(...arr);
+  const missingNumbers: number[] = [];
+
+  for (let i = 1; i < maxNum; i++) {
+    if (!arr.includes(i)) {
+      missingNumbers.push(i);
+    }
+  }
+
+  return missingNumbers;
 }
-console.log(capitalizeWordsToSnakeCase('name should be a string'));
+
+console.log(findDisappearedNumbers([1, 3, 4, 7]));
