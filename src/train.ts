@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZH-TASK");
+console.log("ZJ-TASK");
 
 // // H-TASK
 
@@ -420,17 +420,49 @@ console.log("ZH-TASK");
 
 // ZH-TASK
 
-function findDisappearedNumbers(arr: number[]): number[] {
-  const maxNum = Math.max(...arr);
-  const missingNumbers: number[] = [];
+// function findDisappearedNumbers(arr: number[]): number[] {
+//   const maxNum = Math.max(...arr);
+//   const missingNumbers: number[] = [];
 
-  for (let i = 1; i < maxNum; i++) {
-    if (!arr.includes(i)) {
-      missingNumbers.push(i);
+//   for (let i = 1; i < maxNum; i++) {
+//     if (!arr.includes(i)) {
+//       missingNumbers.push(i);
+//     }
+//   }
+
+//   return missingNumbers;
+// }
+
+// console.log(findDisappearedNumbers([1, 3, 4, 7]));
+
+// ZI-TASK
+
+// function delayHelloWorld(message: string): Promise<string> {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(message);
+//     }, 3000);
+//   });
+// }
+
+// async function run() {
+//   const result = await delayHelloWorld("Hello World");
+//   console.log(result);
+// }
+
+// run();
+
+// ZJ-TASK
+
+function reduceNestedArray(arr: any[]): number {
+  return arr.reduce((sum, item) => {
+    if (Array.isArray(item)) {
+      return sum + reduceNestedArray(item);
+    } else if (typeof item === "number") {
+      return sum + item;
     }
-  }
-
-  return missingNumbers;
+    return sum;
+  }, 0);
 }
-
-console.log(findDisappearedNumbers([1, 3, 4, 7]));
+const result = reduceNestedArray([1, [1, 2, [4]]]);
+console.log(result);
