@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZJ-TASK");
+console.log("ZK-TASK");
 
 // // H-TASK
 
@@ -454,15 +454,31 @@ console.log("ZJ-TASK");
 
 // ZJ-TASK
 
-function reduceNestedArray(arr: any[]): number {
-  return arr.reduce((sum, item) => {
-    if (Array.isArray(item)) {
-      return sum + reduceNestedArray(item);
-    } else if (typeof item === "number") {
-      return sum + item;
+// function reduceNestedArray(arr: any[]): number {
+//   return arr.reduce((sum, item) => {
+//     if (Array.isArray(item)) {
+//       return sum + reduceNestedArray(item);
+//     } else if (typeof item === "number") {
+//       return sum + item;
+//     }
+//     return sum;
+//   }, 0);
+// }
+// const result = reduceNestedArray([1, [1, 2, [4]]]);
+// console.log(result);
+
+// ZK-TASK
+
+function printNumbers(): void {
+  let num = 1;
+  const interval = setInterval(() => {
+    console.log(num);
+    if (num === 5) {
+      clearInterval(interval);
+    } else {
+      num++;
     }
-    return sum;
-  }, 0);
+  }, 1000);
 }
-const result = reduceNestedArray([1, [1, 2, [4]]]);
-console.log(result);
+
+printNumbers();
