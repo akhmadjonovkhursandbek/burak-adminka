@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZK-TASK");
+console.log("ZL-TASK");
 
 // // H-TASK
 
@@ -469,16 +469,24 @@ console.log("ZK-TASK");
 
 // ZK-TASK
 
-function printNumbers(): void {
-  let num = 1;
-  const interval = setInterval(() => {
-    console.log(num);
-    if (num === 5) {
-      clearInterval(interval);
-    } else {
-      num++;
-    }
-  }, 1000);
+// function printNumbers(): void {
+//   let num = 1;
+//   const interval = setInterval(() => {
+//     console.log(num);
+//     if (num === 5) {
+//       clearInterval(interval);
+//     } else {
+//       num++;
+//     }
+//   }, 1000);
+// }
+
+// printNumbers();
+
+// ZL-TASK
+
+function stringToKebab(str: string): string {
+  return str.trim().toLowerCase();
 }
 
-printNumbers();
+console.log(stringToKebab("I love Kebab"));
