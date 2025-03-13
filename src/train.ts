@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZM-TASK");
+console.log("ZN-TASK");
 
 // // H-TASK
 
@@ -493,9 +493,21 @@ console.log("ZM-TASK");
 
 // ZM-TASK
 
-function reverseInteger(num: number): number {
-  const reversed = parseInt(num.toString().split("").reverse().join(""));
-  return Math.sign(num) * reversed;
+// function reverseInteger(num: number): number {
+//   const reversed = parseInt(num.toString().split("").reverse().join(""));
+//   return Math.sign(num) * reversed;
+// }
+// console.log(reverseInteger(123456789));
+// console.log(reverseInteger(-98765));
+
+// ZN-TASK
+
+function rotateArray(arr: number[], index: number): number[] {
+  if (index < 0 || index >= arr.length) {
+    throw new Error("Index out of bounds");
+  }
+  const part1 = arr.slice(-index);
+  const part2 = arr.slice(0, -index);
+  return part1.concat(part2);
 }
-console.log(reverseInteger(123456789));
-console.log(reverseInteger(-98765));
+console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
