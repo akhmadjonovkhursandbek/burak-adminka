@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZL-TASK");
+console.log("ZM-TASK");
 
 // // H-TASK
 
@@ -485,8 +485,17 @@ console.log("ZL-TASK");
 
 // ZL-TASK
 
-function stringToKebab(str: string): string {
-  return str.trim().toLowerCase();
-}
+// function stringToKebab(str: string): string {
+//   return str.trim().toLowerCase();
+// }
 
-console.log(stringToKebab("I love Kebab"));
+// console.log(stringToKebab("I love Kebab"));
+
+// ZM-TASK
+
+function reverseInteger(num: number): number {
+  const reversed = parseInt(num.toString().split("").reverse().join(""));
+  return Math.sign(num) * reversed;
+}
+console.log(reverseInteger(123456789));
+console.log(reverseInteger(-98765));
