@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZN-TASK");
+console.log("ZO-TASK");
 
 // // H-TASK
 
@@ -502,12 +502,34 @@ console.log("ZN-TASK");
 
 // ZN-TASK
 
-function rotateArray(arr: number[], index: number): number[] {
-  if (index < 0 || index >= arr.length) {
-    throw new Error("Index out of bounds");
+// function rotateArray(arr: number[], index: number): number[] {
+//   if (index < 0 || index >= arr.length) {
+//     throw new Error("Index out of bounds");
+//   }
+//   const part1 = arr.slice(-index);
+//   const part2 = arr.slice(0, -index);
+//   return part1.concat(part2);
+// }
+// console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
+
+// ZO-TASK
+
+function areParenthesesBalanced(str: string): boolean {
+  let balance = 0;
+  for (const char of str) {
+    if (char === "(") {
+      balance++;
+    } else if (char === ")") {
+      balance--;
+    }
+    if (balance < 0) {
+      return false;
+    }
   }
-  const part1 = arr.slice(-index);
-  const part2 = arr.slice(0, -index);
-  return part1.concat(part2);
+  return balance === 0;
 }
-console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
+console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"));
+console.log(areParenthesesBalanced("((test)"));
+console.log(areParenthesesBalanced("no parentheses"));
+console.log(areParenthesesBalanced("(()())"));
+console.log(areParenthesesBalanced("(()"));
