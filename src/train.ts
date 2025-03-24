@@ -514,22 +514,73 @@ console.log("ZO-TASK");
 
 // ZO-TASK
 
-function areParenthesesBalanced(str: string): boolean {
-  let balance = 0;
-  for (const char of str) {
-    if (char === "(") {
-      balance++;
-    } else if (char === ")") {
-      balance--;
-    }
-    if (balance < 0) {
-      return false;
+// function areParenthesesBalanced(str: string): boolean {
+//   let balance = 0;
+//   for (const char of str) {
+//     if (char === "(") {
+//       balance++;
+//     } else if (char === ")") {
+//       balance--;
+//     }
+//     if (balance < 0) {
+//       return false;
+//     }
+//   }
+//   return balance === 0;
+// }
+// console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"));
+// console.log(areParenthesesBalanced("((test)"));
+// console.log(areParenthesesBalanced("no parentheses"));
+// console.log(areParenthesesBalanced("(()())"));
+// console.log(areParenthesesBalanced("(()"));
+
+// ZP-TASK
+
+// function areArraysEqual(arr1: number[], arr2: number[]): boolean {
+//   if (arr1.length !== arr2.length) return false;
+
+//   const getFrequencyMap = (arr: number[]): Record<number, number> => {
+//     return arr.reduce((acc, num) => {
+//       acc[num] = (acc[num] || 0) + 1;
+//       return acc;
+//     }, {} as Record<number, number>);
+//   };
+
+//   const freq1 = getFrequencyMap(arr1);
+//   const freq2 = getFrequencyMap(arr2);
+
+//   for (let key in freq1) {
+//     if (freq1[key] !== freq2[key]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+// console.log(areArraysEqual([1, 2, 3], [3, 1, 2]));
+// console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1]));
+// console.log(areArraysEqual([1, 2, 3], [4, 1, 2]));
+// console.log(areArraysEqual([1, 1, 2, 2, 3], [3, 1, 2, 1, 2]));
+
+// ZQ-TASK
+
+function findDuplicates(arr: number[]): number[] {
+  const frequencyMap = new Map<number, number>();
+  const result: number[] = [];
+
+  for (const num of arr) {
+    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+  }
+
+  for (const [key, value] of frequencyMap.entries()) {
+    if (value === 2) {
+      result.push(key);
     }
   }
-  return balance === 0;
+
+  return result;
 }
-console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda"));
-console.log(areParenthesesBalanced("((test)"));
-console.log(areParenthesesBalanced("no parentheses"));
-console.log(areParenthesesBalanced("(()())"));
-console.log(areParenthesesBalanced("(()"));
+console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4]));
+console.log(findDuplicates([1, 1, 2, 2, 3, 3, 4, 4]));
+console.log(findDuplicates([1, 2, 3, 4, 5, 6]));
+console.log(findDuplicates([10, 20, 10, 30, 40, 50, 30, 30]));
