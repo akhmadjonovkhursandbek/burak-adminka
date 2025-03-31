@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZO-TASK");
+console.log("ZR-TASK");
 
 // // H-TASK
 
@@ -564,23 +564,42 @@ console.log("ZO-TASK");
 
 // ZQ-TASK
 
-function findDuplicates(arr: number[]): number[] {
-  const frequencyMap = new Map<number, number>();
-  const result: number[] = [];
+// function findDuplicates(arr: number[]): number[] {
+//   const frequencyMap = new Map<number, number>();
+//   const result: number[] = [];
 
-  for (const num of arr) {
-    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
-  }
+//   for (const num of arr) {
+//     frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+//   }
 
-  for (const [key, value] of frequencyMap.entries()) {
-    if (value === 2) {
-      result.push(key);
+//   for (const [key, value] of frequencyMap.entries()) {
+//     if (value === 2) {
+//       result.push(key);
+//     }
+//   }
+
+//   return result;
+// }
+// console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4]));
+// console.log(findDuplicates([1, 1, 2, 2, 3, 3, 4, 4]));
+// console.log(findDuplicates([1, 2, 3, 4, 5, 6]));
+// console.log(findDuplicates([10, 20, 10, 30, 40, 50, 30, 30]));
+
+// ZR-TASK
+
+function countNumberAndLetters(input: string): {
+  number: number;
+  letter: number;
+} {
+  let numberCount = 0;
+  let letterCount = 0;
+  for (const char of input) {
+    if (/[0-9]/.test(char)) {
+      numberCount++;
+    } else if (/[a-zA-Z]/.test(char)) {
+      letterCount++;
     }
   }
-
-  return result;
+  return { number: numberCount, letter: letterCount };
 }
-console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4]));
-console.log(findDuplicates([1, 1, 2, 2, 3, 3, 4, 4]));
-console.log(findDuplicates([1, 2, 3, 4, 5, 6]));
-console.log(findDuplicates([10, 20, 10, 30, 40, 50, 30, 30]));
+console.log(countNumberAndLetters("string152%¥"));
