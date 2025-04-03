@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZR-TASK");
+console.log("ZS-TASK");
 
 // // H-TASK
 
@@ -587,19 +587,35 @@ console.log("ZR-TASK");
 
 // ZR-TASK
 
-function countNumberAndLetters(input: string): {
-  number: number;
-  letter: number;
-} {
-  let numberCount = 0;
-  let letterCount = 0;
-  for (const char of input) {
-    if (/[0-9]/.test(char)) {
-      numberCount++;
-    } else if (/[a-zA-Z]/.test(char)) {
-      letterCount++;
+// function countNumberAndLetters(input: string): {
+//   number: number;
+//   letter: number;
+// } {
+//   let numberCount = 0;
+//   let letterCount = 0;
+//   for (const char of input) {
+//     if (/[0-9]/.test(char)) {
+//       numberCount++;
+//     } else if (/[a-zA-Z]/.test(char)) {
+//       letterCount++;
+//     }
+//   }
+//   return { number: numberCount, letter: letterCount };
+// }
+// console.log(countNumberAndLetters("string152%¥"));
+
+// ZS-TASK
+
+function singleNumber(nums: number[]): number {
+  const numCount: Record<number, number> = {};
+  for (const num of nums) {
+    numCount[num] = (numCount[num] || 0) + 1;
+  }
+  for (const num in numCount) {
+    if (numCount[num] === 1) {
+      return Number(num);
     }
   }
-  return { number: numberCount, letter: letterCount };
+  throw new Error("No unique number found");
 }
-console.log(countNumberAndLetters("string152%¥"));
+console.log(singleNumber([4, 2, 1, 2, 1]));
