@@ -622,19 +622,36 @@ console.log("ZT-TASK");
 
 // ZT-TASK
 
-function firstUniqueCharIndex(s: string): number {
-  const charCount: Map<string, number> = new Map();
+// function firstUniqueCharIndex(s: string): number {
+//   const charCount: Map<string, number> = new Map();
 
-  for (const char of s) {
-    charCount.set(char, (charCount.get(char) || 0) + 1);
+//   for (const char of s) {
+//     charCount.set(char, (charCount.get(char) || 0) + 1);
+//   }
+
+//   for (let i = 0; i < s.length; i++) {
+//     if (charCount.get(s[i]) === 1) {
+//       return i;
+//     }
+//   }
+
+//   return -1;
+// }
+// console.log(firstUniqueCharIndex("stamp"));
+
+// ZU-TASK
+
+function sumOfUnique(nums: number[]): number {
+  const numCount: Record<number, number> = {};
+  for (const num of nums) {
+    numCount[num] = (numCount[num] || 0) + 1;
   }
-
-  for (let i = 0; i < s.length; i++) {
-    if (charCount.get(s[i]) === 1) {
-      return i;
+  let sum = 0;
+  for (const num in numCount) {
+    if (numCount[num] === 1) {
+      sum += Number(num);
     }
   }
-
-  return -1;
+  return sum;
 }
-console.log(firstUniqueCharIndex("stamp"));
+console.log(sumOfUnique([1, 2, 3, 2]));
