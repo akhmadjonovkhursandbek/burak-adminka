@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("ZS-TASK");
+console.log("ZT-TASK");
 
 // // H-TASK
 
@@ -606,16 +606,35 @@ console.log("ZS-TASK");
 
 // ZS-TASK
 
-function singleNumber(nums: number[]): number {
-  const numCount: Record<number, number> = {};
-  for (const num of nums) {
-    numCount[num] = (numCount[num] || 0) + 1;
+// function singleNumber(nums: number[]): number {
+//   const numCount: Record<number, number> = {};
+//   for (const num of nums) {
+//     numCount[num] = (numCount[num] || 0) + 1;
+//   }
+//   for (const num in numCount) {
+//     if (numCount[num] === 1) {
+//       return Number(num);
+//     }
+//   }
+//   throw new Error("No unique number found");
+// }
+// console.log(singleNumber([4, 2, 1, 2, 1]));
+
+// ZT-TASK
+
+function firstUniqueCharIndex(s: string): number {
+  const charCount: Map<string, number> = new Map();
+
+  for (const char of s) {
+    charCount.set(char, (charCount.get(char) || 0) + 1);
   }
-  for (const num in numCount) {
-    if (numCount[num] === 1) {
-      return Number(num);
+
+  for (let i = 0; i < s.length; i++) {
+    if (charCount.get(s[i]) === 1) {
+      return i;
     }
   }
-  throw new Error("No unique number found");
+
+  return -1;
 }
-console.log(singleNumber([4, 2, 1, 2, 1]));
+console.log(firstUniqueCharIndex("stamp"));
